@@ -1,13 +1,14 @@
+require._extensions['.mjs'] = require._extensions['.js'];
 //import { renderAPI } from '/heellife-events-plugin/request.mjs';
 import { renderAPI as renderHL }
-    from '/heellife-events-plugin/request.mjs';
+    from '/github.com/abunts/heellife-events-plugin/request.mjs';
 import { renderAPI as renderOE } from
-    '/odum-institute-plugin/request.mjs';
+    '/github.com/abunts/the-odum-institute-plugin/request.mjs';
 //fetch heel life events
 const fetchHLEvents = async () => {
     let events = []
     //get event info 
-    return renderHL(events);
+   return renderHL(events);
 }
 //fetch odum events
 const fetchOdumEvents = async () => {
@@ -15,7 +16,7 @@ const fetchOdumEvents = async () => {
     //get event info
     return renderOE(events);
 }
-//create standard event object t
+//create standard event object
 const createEvent = (title, date, description, url) => {
     return { title, date, description, url }
 }
