@@ -1,20 +1,19 @@
 //import { renderAPI } from '/heellife-events-plugin/request.mjs';
-import {renderAPI as render}
-  from '/heellife-events-plugin/request.mjs';
-import { renderAPI } from '/odum-institute-plugin/request.mjs';
+import { renderAPI as renderHL }
+    from '/heellife-events-plugin/request.mjs';
+import { renderAPI as renderOE } from
+    '/odum-institute-plugin/request.mjs';
 //fetch heel life events
 const fetchHLEvents = async () => {
     let events = []
     //get event info 
-    render(events => { render(events); });
-    return events;
+    return renderHL(events);
 }
 //fetch odum events
 const fetchOdumEvents = async () => {
     let events = []
     //get event info
-    renderAPI(events => { renderAPI(events); });
-    return events;
+    return renderOE(events);
 }
 //create standard event object t
 const createEvent = (title, date, description, url) => {
