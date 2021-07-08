@@ -10,7 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "event-request": "github:abunts/the-odum-institute-plugin",
+    "event-request": "github:abunts/heellife-events-plugin",
     "nodemon": "^2.0.9"
   }
 }
