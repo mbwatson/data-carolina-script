@@ -1,7 +1,10 @@
+import { renderAPI } from '/heellife-events-plugin/request.mjs';
+import { renderAPI } from '/odum-institute-plugin/request.mjs';
 //fetch heel life events
 const fetchHLEvents = async () => {
     let events = []
     //get event info 
+    renderAPI(events => { renderAPI(events); });
     return events;
 }
 //fetch odum events
@@ -30,4 +33,3 @@ Promise.all(fetchingPromises).then(responses => {
     //write to events.json file
 })
     .catch()
-//changes
