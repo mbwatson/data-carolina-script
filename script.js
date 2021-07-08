@@ -30,3 +30,4 @@ Promise.all(fetchingPromises).then(responses => {
 //write to events.json file
 })
 .catch()
+//
