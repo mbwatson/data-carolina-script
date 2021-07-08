@@ -1,6 +1,6 @@
 //require._extensions['.mjs'] = require._extensions['.js'];
-const renderHL = require('/heellife-events-plugin/request.mjs');
-const renderOE = require('/odum-institute-plugin/request.mjs');
+const renderHL = require('/heellife-events-plugin/request.mjs', renderAPI());
+const renderOE = require('/odum-institute-plugin/request.mjs', renderAPI());
 //fetch heel life events
 const fetchHLEvents = async () => {
     let events = []

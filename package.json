@@ -2,15 +2,14 @@
   "name": "script",
   "version": "1.0.0",
   "main": "script.js",
-  "type": "module",
-  "scripts": {
+  "type": "commonjs",
+ "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "event-request": "github:abunts/heellife-events-plugin",
     "nodemon": "^2.0.9"
   }
 }
