@@ -27,7 +27,6 @@ const writeEvents = async events => {
   try {
     const events = await gatherAllEvents()
     writeEvents(events)
-    console.log(events)
   } catch (error) {
     console.log(error)
   }
