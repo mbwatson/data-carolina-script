@@ -1,6 +1,5 @@
-//require._extensions['.mjs'] = require._extensions['.js'];
-import { renderAPI as renderHL } from './heellife-events-plugin/request.mjs';
-import { renderAPI as renderOE } from './the-odum-institute-plugin/request.mjs';
+import { renderAPI as renderHL } from './heellife-events-plugin/request.js';
+import { renderAPI as renderOE } from './the-odum-institute-plugin/request.js';
 //fetch heel life events
 const fetchHLEvents = async () => {
     //get event info 
