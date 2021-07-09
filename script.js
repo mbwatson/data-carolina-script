@@ -1,5 +1,5 @@
-import { renderAPI as renderHL } from './heellife-events-plugin/request.js';
-import { renderAPI as renderOE } from './the-odum-institute-plugin/request.js';
+import { renderAPI as renderHL } from './plugins/hlevents.js';
+import { renderAPI as renderOE } from './plugins/odumevents.js';
 //fetch heel life events
 const fetchHLEvents = async () => {
     //get event info 
