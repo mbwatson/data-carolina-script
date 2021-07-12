@@ -57,3 +57,14 @@ const writeEvents = async events => {
         }
     });
 }
+
+(async () => {
+    try {
+        const events = fetchAllEvents();
+        writeEvents(events);
+        console.log(events)
+    }
+    catch (error){
+        console.log(error);
+    }
+})();
