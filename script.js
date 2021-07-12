@@ -1,11 +1,12 @@
 import fetchHLEvents from './plugins/hlevents.js';
 import { renderAPI as renderOE } from './plugins/odumevents.js';
+import fs from 'fs';
 //fetch heel life events
-const fetchHLEvents = async () => {
-    //get event info 
-    let events = []
-    const HLevents = renderHL();
-    HLevents.push(events);
+let actualEvents = []
+const fetchEvents = async () => {
+    const events = await fetchHLEvents();
+    console.log(events);
+    actualEvents.push(events);
     return events;
 }
 //fetch odum events
@@ -16,6 +17,7 @@ const fetchOdumEvents = async () => {
     odumEvents.push(events);
     return events;
 }
+/*
 //create standard event object
 const createEvent = (title, date, description, url) => {
     return { title, date, description, url }
@@ -43,11 +45,11 @@ Promise.all(fetchingPromises).then(responses => {
 })
     .catch()
 
-
+*/
 
     //writing data to JSON file
-    const fs = require('fs');
-    const jsonString = JSON.stringify(dataScienceEvents, null, 2);
+   const writeEvents = async events => {
+    const jsonString = JSON.stringify(events, null, 2);
     fs.writeFile('./newEvents.json', jsonString, err => {
         if (err) {
             console.log('Error writing file', err)
@@ -55,5 +57,4 @@ Promise.all(fetchingPromises).then(responses => {
             console.log('Successfully wrote file')
         }
     });
-    console.log(dataScienceEvents);
 }
