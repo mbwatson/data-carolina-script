@@ -1,4 +1,4 @@
-import { renderAPI as renderHL } from './plugins/hlevents.js';
+import fetchHLEvents from './plugins/hlevents.js';
 import { renderAPI as renderOE } from './plugins/odumevents.js';
 //fetch heel life events
 const fetchHLEvents = async () => {
@@ -42,3 +42,18 @@ Promise.all(fetchingPromises).then(responses => {
     //write to events.json file
 })
     .catch()
+
+
+
+    //writing data to JSON file
+    const fs = require('fs');
+    const jsonString = JSON.stringify(dataScienceEvents, null, 2);
+    fs.writeFile('./newEvents.json', jsonString, err => {
+        if (err) {
+            console.log('Error writing file', err)
+        } else {
+            console.log('Successfully wrote file')
+        }
+    });
+    console.log(dataScienceEvents);
+}

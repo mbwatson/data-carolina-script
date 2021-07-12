@@ -42,4 +42,4 @@ async function renderAPI() {
     console.log(dataScienceEvents);
 }
 
-export default {renderAPI};
+
