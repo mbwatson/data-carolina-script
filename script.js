@@ -1,22 +1,21 @@
 import fetchHLEvents from './plugins/hlevents.js';
-import { renderAPI as renderOE } from './plugins/odumevents.js';
+import fetchOdumEvents from './plugins/odumevents.js';
 import fs from 'fs';
-//fetch heel life events
+
 let actualEvents = []
-const fetchEvents = async () => {
-    const events = await fetchHLEvents();
-    console.log(events);
-    actualEvents.push(events);
-    return events;
+
+const fetchAllEvents = async () => {
+    const hlevents = await fetchHLEvents();
+    console.log(hlevents);
+    actualEvents.push(hlevents);
+
+    const odumEvents = await fetchOdumEvents();
+    console.log(odumEvents);
+    actualEvents.push(odumEvents);
+
+    return { hlevents, odumEvents }
 }
-//fetch odum events
-const fetchOdumEvents = async () => {
-    //get event info
-    let events = []
-    const odumEvents = renderOE();
-    odumEvents.push(events);
-    return events;
-}
+
 /*
 //create standard event object
 const createEvent = (title, date, description, url) => {
@@ -47,8 +46,8 @@ Promise.all(fetchingPromises).then(responses => {
 
 */
 
-    //writing data to JSON file
-   const writeEvents = async events => {
+//writing data to JSON file
+const writeEvents = async events => {
     const jsonString = JSON.stringify(events, null, 2);
     fs.writeFile('./newEvents.json', jsonString, err => {
         if (err) {
