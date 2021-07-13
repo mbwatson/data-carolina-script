@@ -14,18 +14,23 @@ async function getAPI(api_url) {
     return [];
 }
 async function transformEvents(info) {
-    info = await getAPI(api_url);
-    info.map(event => ({
-        name: event.title,
-        description: event.description,
-        url: `https://odum.unc.edu/event/${event.slug}/${event.start_date}`,
-        date: event.start_date
-    }));
-    info.filter((event) => {
-        return event.description.includes('data science'); //case sensitive
-    })
+    let infoArray
+    try {
+       // info = await getAPI(api_url)
+        infoArray = await info.map(event => ({
+            name: event.title,
+            description: event.description,
+            date: event.start_date,
+            url: `https://odum.unc.edu/event/${event.slug}/${event.start_date.slice(0, 11)}`,
+        }));
+        let dataScienceEvents = await infoArray.filter((event) => {
+            return event.description.includes('Cheerwine'); //case sensitive
+        })
+        console.log(dataScienceEvents);
+    } catch (error) {
+        console.log(error);
+    }
 }
-
 
 export default async function () {
     const info = await getAPI(api_url)

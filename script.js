@@ -15,6 +15,7 @@ const fetchAllEvents = async () => {
 
     return { hlevents, odumEvents }
 }
+console.log(actualEvents)
 
 /*
 //create standard event object

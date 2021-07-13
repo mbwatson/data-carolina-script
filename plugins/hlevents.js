@@ -14,18 +14,23 @@ async function getAPI(api_url) {
     return [];
 }
 async function transformEvents(info) {
-    info = await getAPI(api_url);
-    info.map(event => ({
-        name: event.name,
-        description: event.description,
-        url: `https://heellife.unc.edu/event/${event.id}`,
-        date: event.startsOn,
-    }));
-    info.filter((event) => {
-        return event.description.includes('data science'); //case sensitive
-    })
+    try {
+       // info = await getAPI(api_url);
+        let infoArray = await info.map(event => ({
+            name: event.name,
+            description: event.description,
+            url: `https://heellife.unc.edu/event/${event.id}`,
+            date: event.startsOn,
+        }));
+        let dataScienceEvents = await infoArray.filter((event) => {
+            return event.description.includes('Cheerwine'); //case sensitive
+        })
+        console.log(dataScienceEvents)
+    }
+    catch (error) {
+        console.log(error)
+    }
 }
-
 
 export default async function () {
     const info = await getAPI(api_url)
