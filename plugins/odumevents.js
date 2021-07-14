@@ -30,7 +30,6 @@ async function transformEvents(info) {
     } catch (error) {
         console.log(error);
     }
-    console.log(dataScienceEvents);
 }
 
 export default async function () {

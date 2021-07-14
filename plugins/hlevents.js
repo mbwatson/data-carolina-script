@@ -15,17 +15,16 @@ async function getAPI(api_url) {
 }
 async function transformEvents(info) {
     try {
-       // info = await getAPI(api_url);
-        let infoArray = await info.map(event => ({
+        let infoArray = await info.map((event) => ({
             name: event.name,
             description: event.description,
             url: `https://heellife.unc.edu/event/${event.id}`,
             date: event.startsOn,
         }));
-        let dataScienceEvents = await infoArray.filter((event) => {
-            return event.description.includes('data science'); //case sensitive
+        let dataScienceEvents = infoArray.filter((event) => {
+             event.description.includes('data science'); //case sensitive
         })
-        console.log(dataScienceEvents)
+       return dataScienceEvents;
     }
     catch (error) {
         console.log(error)

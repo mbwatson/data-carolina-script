@@ -6,14 +6,12 @@ let actualEvents = []
 
 const fetchAllEvents = async () => {
     const hlevents = await fetchHLEvents();
-    //  console.log(hlevents);
-    actualEvents.push(hlevents);
+    // actualEvents.push(hlevents);
 
     const odumEvents = await fetchOdumEvents();
-    // console.log(odumEvents);
-    actualEvents.push(odumEvents);
+    // actualEvents.push(odumEvents);
 
-    return { hlevents, odumEvents }
+    return { hlevents, odumEvents };
 }
 console.log(actualEvents)
 
