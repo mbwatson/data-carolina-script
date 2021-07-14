@@ -7,8 +7,7 @@ async function getAPI(api_url) {
         const response = await fetch(api_url);
         var data = await response.json();
         return data.value;
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error);
     }
     return [];
@@ -25,16 +24,15 @@ async function transformEvents(info) {
              event.description.includes('data'); //case sensitive
         })
        return dataScienceEvents;
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error)
     }
 }
 
 export default async function () {
-    const info = await getAPI(api_url)
-    const transformedEvents = await transformEvents(info)
-    return transformedEvents
+    const info = await getAPI(api_url);
+    const transformedEvents = await transformEvents(info);
+    return transformedEvents;
 }
 
 

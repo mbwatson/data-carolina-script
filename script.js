@@ -6,22 +6,17 @@ let actualEvents = []
 
 const fetchAllEvents = async () => {
     const hlevents = await fetchHLEvents();
-    // actualEvents.push(hlevents);
+    actualEvents.push(hlevents);
 
     const odumEvents = await fetchOdumEvents();
-    // actualEvents.push(odumEvents);
+    actualEvents.push(odumEvents);
 
-    return { hlevents, odumEvents };
+    return actualEvents;
 }
-//console.log(actualEvents)
 
-/*
-//create standard event object
-const createEvent = (title, date, description, url) => {
-    return { title, date, description, url }
-}
-//map events 
-const actualEvents = responses.map(createEvent => ({ title, date, description, url }));
+const createEvent = actualEvents.info;
+allEvents = responses.map(createEvent =>({ title, date, description, url }));
+
 //fetching promises
 const fetchingPromises = [
     fetchHLEvents(),
@@ -30,20 +25,17 @@ const fetchingPromises = [
 //response from heel life and odum and adding to an array
 Promise.all(fetchingPromises).then(responses => {
     //response from heellife is responses[0]
-    const hl = responses[0].fetchHLEvents();
+    const hlResponse = responses[0].fetchHLEvents();
+
     //response from odum is responses[1]
-    const oi = responses[1].fetchOdumEvents();
+    const odumResponse = responses[1].fetchOdumEvents();
     //const allEvents = [heellife ones, odum ones, etc]
-    const allEvents = [hl, oi];
+    allEvents = [hlResponse, odumResponse];
     //and sort by date
-    var dataScienceEvents = allEvents.filter((event) => {
-        return event.description.includes('data science'); //case sensitive
-    });
-    //write to events.json file
+    allEvents.sort((a, b) => a - b)
+    console.log(allEvents);
 })
     .catch()
-
-*/
 
 //writing data to JSON file
 const writeEvents = async (info) => {
