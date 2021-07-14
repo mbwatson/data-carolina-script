@@ -6,11 +6,11 @@ let actualEvents = []
 
 const fetchAllEvents = async () => {
     const hlevents = await fetchHLEvents();
-    console.log(hlevents);
+    //  console.log(hlevents);
     actualEvents.push(hlevents);
 
     const odumEvents = await fetchOdumEvents();
-    console.log(odumEvents);
+    // console.log(odumEvents);
     actualEvents.push(odumEvents);
 
     return { hlevents, odumEvents }
@@ -48,8 +48,8 @@ Promise.all(fetchingPromises).then(responses => {
 */
 
 //writing data to JSON file
-const writeEvents = async events => {
-    const jsonString = JSON.stringify(events, null, 2);
+const writeEvents = async info => {
+    const jsonString = JSON.stringify(info, null, 2);
     fs.writeFile('./newEvents.json', jsonString, err => {
         if (err) {
             console.log('Error writing file', err)
@@ -61,11 +61,11 @@ const writeEvents = async events => {
 
 (async () => {
     try {
-        const events = fetchAllEvents();
-        writeEvents(events);
-        console.log(events)
+        const info = fetchAllEvents();
+        writeEvents(info);
+        console.log(info)
     }
-    catch (error){
+    catch (error) {
         console.log(error);
     }
 })();
