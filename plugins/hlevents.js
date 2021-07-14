@@ -22,7 +22,7 @@ async function transformEvents(info) {
             date: event.startsOn,
         }));
         let dataScienceEvents = infoArray.filter((event) => {
-             event.description.includes('data science'); //case sensitive
+             event.description.includes('data'); //case sensitive
         })
        return dataScienceEvents;
     }

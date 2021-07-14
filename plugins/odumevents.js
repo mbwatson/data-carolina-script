@@ -16,7 +16,6 @@ async function getAPI(api_url) {
 async function transformEvents(info) {
     let infoArray
     try {
-       // info = await getAPI(api_url)
         infoArray = await info?.map(event => ({
             name: event.title,
             description: event.description,
@@ -24,7 +23,7 @@ async function transformEvents(info) {
             url: `https://odum.unc.edu/event/${event.slug}/${event.start_date.slice(0, 11)}`,
         }));
         let dataScienceEvents = await infoArray?.filter((event) => {
-            event.description.includes('data science'); //case sensitive
+            event.description.includes('data'); //case sensitive
         })
         return dataScienceEvents;
     } catch (error) {

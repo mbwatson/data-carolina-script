@@ -13,7 +13,7 @@ const fetchAllEvents = async () => {
 
     return { hlevents, odumEvents };
 }
-console.log(actualEvents)
+//console.log(actualEvents)
 
 /*
 //create standard event object
@@ -46,13 +46,13 @@ Promise.all(fetchingPromises).then(responses => {
 */
 
 //writing data to JSON file
-const writeEvents = async info => {
+const writeEvents = async (info) => {
     const jsonString = JSON.stringify(info, null, 2);
-    fs.writeFile('./newEvents.json', jsonString, err => {
+    fs.writeFile('./newEvents.json', jsonString, (err) => {
         if (err) {
-            console.log('Error writing file', err)
+            console.log('Error writing file', err);
         } else {
-            console.log('Successfully wrote file')
+            console.log('Successfully wrote file');
         }
     });
 }
