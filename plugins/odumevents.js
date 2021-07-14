@@ -17,19 +17,20 @@ async function transformEvents(info) {
     let infoArray
     try {
        // info = await getAPI(api_url)
-        infoArray = await info.map(event => ({
+        infoArray = await info?.map(event => ({
             name: event.title,
             description: event.description,
             date: event.start_date,
             url: `https://odum.unc.edu/event/${event.slug}/${event.start_date.slice(0, 11)}`,
         }));
-        let dataScienceEvents = await infoArray.filter((event) => {
-            return event.description.includes('data science'); //case sensitive
+        let dataScienceEvents = await infoArray?.filter((event) => {
+            event.description.includes('data science'); //case sensitive
         })
-        console.log(dataScienceEvents);
+        return dataScienceEvents;
     } catch (error) {
         console.log(error);
     }
+    console.log(dataScienceEvents);
 }
 
 export default async function () {

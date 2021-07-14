@@ -23,7 +23,7 @@ async function transformEvents(info) {
             date: event.startsOn,
         }));
         let dataScienceEvents = await infoArray.filter((event) => {
-            return event.description.includes('Cheerwine'); //case sensitive
+            return event.description.includes('data science'); //case sensitive
         })
         console.log(dataScienceEvents)
     }
