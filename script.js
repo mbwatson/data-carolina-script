@@ -11,31 +11,12 @@ const fetchAllEvents = async () => {
     const odumEvents = await fetchOdumEvents();
     actualEvents.push(odumEvents);
 
+    actualEvents.sort((a, b) => a - b)
+
+    console.log(actualEvents);
+
     return actualEvents;
 }
-
-const createEvent = actualEvents.info;
-allEvents = responses.map(createEvent =>({ title, date, description, url }));
-
-//fetching promises
-const fetchingPromises = [
-    fetchHLEvents(),
-    fetchOdumEvents(),
-]
-//response from heel life and odum and adding to an array
-Promise.all(fetchingPromises).then(responses => {
-    //response from heellife is responses[0]
-    const hlResponse = responses[0].fetchHLEvents();
-
-    //response from odum is responses[1]
-    const odumResponse = responses[1].fetchOdumEvents();
-    //const allEvents = [heellife ones, odum ones, etc]
-    allEvents = [hlResponse, odumResponse];
-    //and sort by date
-    allEvents.sort((a, b) => a - b)
-    console.log(allEvents);
-})
-    .catch()
 
 //writing data to JSON file
 const writeEvents = async (info) => {
