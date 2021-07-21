@@ -22,10 +22,7 @@ async function transformEvents(info) {
             date: event.start_date,
             url: `https://odum.unc.edu/event/${event.slug}/${event.start_date.slice(0, 11)}`,
         }));
-        let dataScienceEvents = await infoArray?.filter((event) => {
-            event.description.includes('data'); //case sensitive
-        })
-        return dataScienceEvents;
+        return infoArray;
     } catch (error) {
         console.log(error);
     }

@@ -20,10 +20,7 @@ async function transformEvents(info) {
             url: `https://heellife.unc.edu/event/${event.id}`,
             date: event.startsOn,
         }));
-        let dataScienceEvents = infoArray.filter((event) => {
-             event.description.includes('data'); //case sensitive
-        })
-       return dataScienceEvents;
+       return infoArray;
     } catch (error) {
         console.log(error)
     }
