@@ -1,32 +1,42 @@
-//fetch heel life events
-const fetchHLEvents = async () => {
-let events = []
-//get event info 
-return events;
+import fetchHLEvents from './plugins/hlevents.js';
+import fetchOdumEvents from './plugins/odumevents.js';
+import fs from 'fs';
+
+let actualEvents = []
+
+const fetchAllEvents = async () => {
+    const hlevents = await fetchHLEvents();
+    actualEvents.push(hlevents);
+
+    const odumEvents = await fetchOdumEvents();
+    actualEvents.push(odumEvents);
+
+    actualEvents.sort((a, b) => a - b)
+
+    console.log(actualEvents);
+
+    return actualEvents;
 }
-//fetch odum events
-const fetchOdumEvents = async () => {
-    let events = []
-    //get event info
-    return events; 
+
+//writing data to JSON file
+const writeEvents = async (info) => {
+    const jsonString = JSON.stringify(info, null, 2);
+    fs.writeFile('./newEvents.json', jsonString, (err) => {
+        if (err) {
+            console.log('Error writing file', err);
+        } else {
+            console.log('Successfully wrote file');
+        }
+    });
 }
-//create standard event object t
-const createEvent = (title, date, description, url) => {
-    return {title, date, description, url}
-}
-//map events 
-const actualEvents = responses.map(createEvent => ({title, date, description, url}));
-//fetching promises
-const fetchingPromises = [
-    fetchHLEvents(),
-    fetchOdumEvents(),
-]
-//response from heel life and odum and adding to an array
-Promise.all(fetchingPromises).then(responses => {
-//response from heellife is responses[0]
-//response from odum is responses[1]
-//const allEvents = [heellife ones, odum ones, etc]
-//and sort by date
-//write to events.json file
-})
-.catch()
+
+(async () => {
+    try {
+        const info = fetchAllEvents();
+        writeEvents(info);
+        console.log(info)
+    }
+    catch (error) {
+        console.log(error);
+    }
+})();
