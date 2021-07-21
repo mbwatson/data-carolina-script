@@ -2,19 +2,11 @@
   "name": "script",
   "version": "1.0.0",
   "main": "script.js",
-  "module": "main.js",
+  "module": "app.js",
   "type": "module",
-  "nodemonConfig": {
-    "ext": "js",
-    "ignore": [
-      "*.test.ts",
-      "events.json"
-    ],
-    "delay": "2"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --ignore '*.json' 'script.js'"
+    "start": "nodemon --ignore '*.json' app.js"
   },
   "author": "",
   "license": "ISC",
