@@ -21,7 +21,7 @@ const fetchAllEvents = async () => {
 //writing data to JSON file
 const writeEvents = async (info) => {
     const jsonString = JSON.stringify(info, null, 2);
-    fs.writeFile('./newEvents.json', jsonString, (err) => {
+    fs.writeFile('./events.json', jsonString, (err) => {
         if (err) {
             console.log('Error writing file', err);
         } else {
