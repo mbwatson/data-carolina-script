@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+const fetch = require('node-fetch');
 
 const api_url = 'https://odum.unc.edu/wp-json/tribe/events/v1/events';
 
@@ -28,7 +28,7 @@ async function transformEvents(info) {
     }
 }
 
-export default async function () {
+module.exports = async function () {
     const info = await getAPI(api_url)
     const transformedEvents = await transformEvents(info)
     return transformedEvents

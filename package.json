@@ -1,31 +1,20 @@
 {
-  "name": "script",
-  "version": "1.0.0",
-  "main": "script.js",
-  "module": "app.js",
-  "type": "module",
+  "name": "mbwatson-data-carolina-script",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --ignore '*.json' app.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "esm": "^3.2.25",
-    "express": "^4.17.1",
-    "node-fetch": "^2.6.1"
+    "next": "11.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/abunts/data-carolina-script.git"
-  },
-  "bugs": {
-    "url": "https://github.com/abunts/data-carolina-script/issues"
-  },
-  "homepage": "https://github.com/abunts/data-carolina-script#readme",
-  "description": "",
   "devDependencies": {
-    "nodemon": "^2.0.11"
+    "eslint": "7.31.0",
+    "eslint-config-next": "11.0.1"
   }
 }
