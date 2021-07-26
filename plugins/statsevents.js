@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-const api_url = 'https://odum.unc.edu/wp-json/tribe/events/v1/events';
+const api_url = 'https://stor.unc.edu/wp-json/tribe/events/v1/events';
 
 async function getAPI(api_url) {
     try {
@@ -20,17 +20,15 @@ async function transformEvents(info) {
             name: event.title,
             description: event.description,
             date: event.start_date,
-            url: `https://odum.unc.edu/event/${event.slug}/${event.start_date.slice(0, 11)}`,
+            url: event.url,
         }));
         return infoArray;
     } catch (error) {
         console.log(error);
     }
 }
-
 export default async function () {
     const info = await getAPI(api_url)
     const transformedEvents = await transformEvents(info)
     return transformedEvents
 };
-
