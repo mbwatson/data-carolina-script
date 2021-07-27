@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from "node-fetch";
 
 const api_url = 'https://heellife.unc.edu/api/discovery/event/search?endsAfter=2021-06-22T16%3A12%3A48-04%3A00&orderByField=endsOn&orderByDirection=ascending&status=Approved&take=15&query=';
 
@@ -26,10 +26,10 @@ async function transformEvents(info) {
     }
 }
 
-module.exports = async function () {
-    const info = await getAPI(api_url);
-    const transformedEvents = await transformEvents(info);
-    return transformedEvents;
-}
+export default async function () {
+    const info = await getAPI(api_url)
+    const transformedEvents = await transformEvents(info)
+    return transformedEvents
+};
 
 
