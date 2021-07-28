@@ -3,7 +3,9 @@ import fetchOdumEvents from '../../plugins/odumevents.js';
 import fetchDSminorEvents from '../../plugins/DSminorevents.js';
 import fetchGillingsEvents from '../../plugins/gillingsevents.js';
 import fetchStatsEvents from '../../plugins/statsevents.js';
-import fetchUNCMainEvents from '../../plugins/uncevents.js';
+
+import sslRootCAs from 'ssl-root-cas/latest';
+sslRootCAs.inject()
 
 import { useRouter } from 'next/router';
 
@@ -13,16 +15,15 @@ const fetchEvents = async () => {
   const dsEvents = await fetchDSminorEvents();
   const gillingsEvents = await fetchGillingsEvents();
   const statsEvents = await fetchStatsEvents();
-  const UNCMainEvents = await fetchUNCMainEvents();
 
-  return [...hlevents, ...odumEvents, ...dsEvents, ...gillingsEvents, ...statsEvents, ...UNCMainEvents];
+  return [...hlevents, ...odumEvents, ...dsEvents, ...gillingsEvents, ...statsEvents];
 }
 
 const Post = () => {
   const router = useRouter();
-  const { pid } = router.query
-
-  return <p>Post: {pid}</p>
+  const { slug } = router.query
+{slug : '/events/[.slug].js'}
+  return <p>Post: {slug}</p>
 }
 //export default Post
 
