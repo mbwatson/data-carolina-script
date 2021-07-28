@@ -13,7 +13,8 @@ const fetchEvents = async () => {
   const gillingsEvents = await fetchGillingsEvents();
   const statsEvents = await fetchStatsEvents();
 
-  return [...hlevents, ...odumEvents, ...dsEvents, ...gillingsEvents, ...statsEvents];
+  return [...hlevents, ...odumEvents, ...dsEvents, ...gillingsEvents, ...statsEvents]
+  .map(event => event.name);
 }
 /*
 const Post = () => {
