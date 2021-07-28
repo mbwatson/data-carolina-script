@@ -1,8 +1,8 @@
-const fetchHLEvents = require('../../plugins/hlevents.js');
-const fetchOdumEvents = require('../../plugins/odumevents.js');
-const fetchDSminorEvents = require('../../plugins/DSminorevents.js');
-const fetchGillingsEvents = require('../../plugins/gillingsevents.js');
-const fetchStatsEvents = require('../../plugins/statsevents.js');
+import fetchHLEvents from '../../plugins/hlevents.js';
+import fetchOdumEvents from '../../plugins/odumevents.js';
+import fetchDSminorEvents from '../../plugins/DSminorevents.js';
+import fetchGillingsEvents from '../../plugins/gillingsevents.js';
+import fetchStatsEvents from '../../plugins/statsevents.js';
 
 const fetchEvents = async () => {
   const hlevents = await fetchHLEvents();
