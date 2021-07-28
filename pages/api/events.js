@@ -13,9 +13,9 @@ const fetchEvents = async () => {
   const dsEvents = await fetchDSminorEvents();
   const gillingsEvents = await fetchGillingsEvents();
   const statsEvents = await fetchStatsEvents();
-  const uncMainEvents = await fetchUNCMainEvents();
+  const UNCMainEvents = await fetchUNCMainEvents();
 
-  return [...hlevents, ...odumEvents, ...dsEvents, ...gillingsEvents, ...statsEvents, ...uncMainEvents];
+  return [...hlevents, ...odumEvents, ...dsEvents, ...gillingsEvents, ...statsEvents, ...UNCMainEvents];
 }
 
 const Post = () => {
