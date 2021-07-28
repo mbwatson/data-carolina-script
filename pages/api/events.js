@@ -4,10 +4,7 @@ import fetchDSminorEvents from '../../plugins/DSminorevents.js';
 import fetchGillingsEvents from '../../plugins/gillingsevents.js';
 import fetchStatsEvents from '../../plugins/statsevents.js';
 
-import sslRootCAs from 'ssl-root-cas/latest';
-sslRootCAs.inject()
-
-import { useRouter } from 'next/router';
+//import useRouter from 'next/router';
 
 const fetchEvents = async () => {
   const hlevents = await fetchHLEvents();
@@ -18,14 +15,15 @@ const fetchEvents = async () => {
 
   return [...hlevents, ...odumEvents, ...dsEvents, ...gillingsEvents, ...statsEvents];
 }
-
+/*
 const Post = () => {
   const router = useRouter();
   const { slug } = router.query
 {slug : '/events/[.slug].js'}
   return <p>Post: {slug}</p>
 }
-//export default Post
+export default Post
+*/
 
 export default async (req, res) => {
   const events = await fetchEvents()
