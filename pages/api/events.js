@@ -24,7 +24,7 @@ const Post = () => {
 
   return <p>Post: {pid}</p>
 }
-export default Post
+//export default Post
 
 export default async (req, res) => {
   const events = await fetchEvents()
