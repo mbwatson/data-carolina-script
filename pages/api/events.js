@@ -4,8 +4,6 @@ import fetchDSminorEvents from '../../plugins/DSminorevents.js';
 import fetchGillingsEvents from '../../plugins/gillingsevents.js';
 import fetchStatsEvents from '../../plugins/statsevents.js';
 
-//import useRouter from 'next/router';
-
 const fetchEvents = async () => {
   const hlevents = await fetchHLEvents();
   const odumEvents = await fetchOdumEvents();
@@ -14,16 +12,6 @@ const fetchEvents = async () => {
   const statsEvents = await fetchStatsEvents();
  return [...hlevents, ...odumEvents, ...dsEvents, ...gillingsEvents, ...statsEvents];
 }
-
-/*
-const Post = () => {
-  const router = useRouter();
-  const { slug } = router.query
-{slug : '/events/[.slug].js'}
-  return <p>Post: {slug}</p>
-}
-export default Post
-*/
 
 
 export default async (req, res) => {
