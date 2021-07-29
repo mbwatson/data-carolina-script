@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:lambda": "netlify-lambda build"
   },
   "dependencies": {
     "next": "^11.0.1",
@@ -16,5 +17,11 @@
   "devDependencies": {
     "eslint": "7.31.0",
     "eslint-config-next": "11.0.1"
+  },
+  "proxy": {
+    "/api": {
+      "target": "https://uncdataevents.netlify.app/api/events",
+      "secure": false
+    }
   }
 }

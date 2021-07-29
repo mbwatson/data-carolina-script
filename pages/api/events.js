@@ -1,8 +1,10 @@
-const fetchHLEvents = require('../../plugins/hlevents.js');
-const fetchOdumEvents = require('../../plugins/odumevents.js');
-const fetchDSminorEvents = require('../../plugins/DSminorevents.js');
-const fetchGillingsEvents = require('../../plugins/gillingsevents.js');
-const fetchStatsEvents = require('../../plugins/statsevents.js');
+import fetchHLEvents from '../../plugins/hlevents.js';
+import fetchOdumEvents from '../../plugins/odumevents.js';
+import fetchDSminorEvents from '../../plugins/DSminorevents.js';
+import fetchGillingsEvents from '../../plugins/gillingsevents.js';
+import fetchStatsEvents from '../../plugins/statsevents.js';
+
+//import useRouter from 'next/router';
 
 const fetchEvents = async () => {
   const hlevents = await fetchHLEvents();
@@ -13,10 +15,24 @@ const fetchEvents = async () => {
   const statsEvents = await fetchStatsEvents();
 */
  return [...hlevents, ...odumEvents];
+<<<<<<< HEAD
+=======
 }
+
+/*
+const Post = () => {
+  const router = useRouter();
+  const { slug } = router.query
+{slug : '/events/[.slug].js'}
+  return <p>Post: {slug}</p>
+>>>>>>> dev
+}
+export default Post
+*/
 
 
 export default async (req, res) => {
+  process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0; //temporary fix... info can be edited by client (disables certificate verification)
   const events = await fetchEvents()
   res.send(events)
 }
