@@ -10,6 +10,7 @@ const fetchEvents = async () => {
   const dsEvents = await fetchDSminorEvents();
   const gillingsEvents = await fetchGillingsEvents();
   const statsEvents = await fetchStatsEvents();
+
  return [...hlevents, ...odumEvents, ...dsEvents, ...gillingsEvents, ...statsEvents];
 }
 
