@@ -9,11 +9,12 @@ import fetchStatsEvents from '../../plugins/statsevents.js';
 const fetchEvents = async () => {
   const hlevents = await fetchHLEvents();
   const odumEvents = await fetchOdumEvents();
+  /*
   const dsEvents = await fetchDSminorEvents();
   const gillingsEvents = await fetchGillingsEvents();
   const statsEvents = await fetchStatsEvents();
-
-  return [...hlevents, ...odumEvents, ...dsEvents, ...gillingsEvents, ...statsEvents];
+*/
+ return [...hlevents, ...odumEvents];
 }
 
 /*
