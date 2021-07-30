@@ -1,9 +1,8 @@
 import useRouter from 'next/router';
 
-const Post = () => {
-  const router = useRouter();
-  const { slug } = router.query
-{slug : '/events/[.slug].js'}
-  return <p>Post: {slug}</p>
+const Post = ({router}) => {
+<Layout title={router.query.title}>
+    <p>hello world {router.query.title}</p>
+</Layout>
 }
-export default Post
+export default useRouter(Post);
