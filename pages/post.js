@@ -1,8 +1,19 @@
-import useRouter from 'next/router';
+import events from "../../api/events.js";
 
-const Post = ({router}) => {
-<Layout title={router.query.title}>
-    <p>hello world {router.query.title}</p>
-</Layout>
+var findEventByKeyword = function (keyword, callback) {
+    if (!events[keyword])
+        return callback(new Error('No events'));
+    return callback(null, events[keyword]);
+};
+
+events.get('/v1/events/:data', function (request, response, next) {
+    var keyword = request.params.keyword;
+    findEventByKeyword(keyword, function (error, event) {
+        if (error) return next(error);
+        return response.render('data', event);
+    });
+});
+
+export default function () {
+    findEventByKeyword('data', callback);
 }
-export default useRouter(Post);
