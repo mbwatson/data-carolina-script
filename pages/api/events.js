@@ -21,7 +21,7 @@ const fetchEvents = async () => {
   console.log(sortedEvents);
   */
 }
-/*
+
 const Index = () => {
   const router = useRouter()
   const { keyword } = router.query;
@@ -29,12 +29,11 @@ const Index = () => {
   //return(<div>{keyword}</div>);
   console.log(keyword);
 }
-*/
 export default async (req, res) => {
   process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0; //temporary fix... info can be edited by client (disables certificate verification)
   const events = await fetchEvents();
-  let sortedEvents = await events.filter((event) => 
+  /*let sortedEvents = await events.filter((event) => 
     event.title.includes('Pride'));
-  res.send(sortedEvents)
-  //res.send(Index)
+  res.send(sortedEvents) */
+  res.send(Index)
 }
