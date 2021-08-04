@@ -16,7 +16,7 @@ const fetchEvents = async () => {
 }
 
 const useRouter = async () => {
-  app.get('https://uncdataevents.netlify.app/api/events', function (req, res){
+  router.get('https://uncdataevents.netlify.app/api/events', function (req, res){
    router.post('/data+science');
    res.send('data science events');
   })
