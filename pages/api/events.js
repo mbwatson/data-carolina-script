@@ -16,10 +16,13 @@ const fetchEvents = async () => {
 
 export default async (req, res) => {
   process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
-  const keywords = ['Data Science', 'Interview', 'Technology', 'Resume', 'Analytics'];
   const pid = req.query.pid
+  //const keywords = ['Data Science', 'Interview', 'Technology', 'Resume', 'Analytics'];
+  let filter1 = 'Data Science'
+  let filter2 = 'Analytics'
+  const filters = [filter1, filter2];
   const events = await fetchEvents()
- .then(events => (events.filter(event => { return event.name.includes(keywords)}
- )));
- res.send(events)
+    .then(events => (events.filter(event => {return filters.includes(event.name)})));
+      //.includes() only accepts one argument
+  res.send(events)
 }
