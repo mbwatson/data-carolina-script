@@ -4,35 +4,20 @@ import fetchDSminorEvents from '../../plugins/DSminorevents.js';
 import fetchGillingsEvents from '../../plugins/gillingsevents.js';
 import fetchStatsEvents from '../../plugins/statsevents.js';
 
-//import useRouter from 'next/router';
-
 const fetchEvents = async () => {
   const hlevents = await fetchHLEvents();
   const odumEvents = await fetchOdumEvents();
-  /*
   const dsEvents = await fetchDSminorEvents();
   const gillingsEvents = await fetchGillingsEvents();
   const statsEvents = await fetchStatsEvents();
-*/
- return [...hlevents, ...odumEvents];
-<<<<<<< HEAD
-=======
-}
 
-/*
-const Post = () => {
-  const router = useRouter();
-  const { slug } = router.query
-{slug : '/events/[.slug].js'}
-  return <p>Post: {slug}</p>
->>>>>>> dev
+  return [...hlevents, ...odumEvents, ...dsEvents, ...gillingsEvents, ...statsEvents];
 }
-export default Post
-*/
-
 
 export default async (req, res) => {
-  process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0; //temporary fix... info can be edited by client (disables certificate verification)
-  const events = await fetchEvents()
+  process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+  const pid = req.query.pid
+    const events = await fetchEvents()
+    .then (events => {return events.filter(event => event.name.includes(pid)|| event.description.includes(pid))});
   res.send(events)
 }
