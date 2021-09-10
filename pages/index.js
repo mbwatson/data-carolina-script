@@ -6,19 +6,38 @@ export default function Home() {
   // `events` contains the event data
   // `setEvents` is a function to assign the `events` variable
   const [events, setEvents] = useState([])
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const response = await axios.get('/api/events');
-      if (!response.data) {
-        return [];
+      try {
+        const response = await axios.get('/api/events');
+        if (!response.data) {
+          throw new Error('no data returned')
+          return [];
+        }
+        // here, we're using the `setEvents` function to, ...well, set events
+        // with the value of the `data` property in the response object.
+        setEvents(response.data);
+      } catch (error) {
+        setError(error)
+        console.error(error.message)
       }
-      // here, we're using the `setEvents` function to, ...well, set events
-      // with the value of the `data` property in the response object.
-      setEvents(response.data);
     }
     fetchEvents();
   }, []);
+
+  if (error) {
+    return (
+      <div>an error occurred!</div>
+    )
+  }
+  
+  if (!events.length) {
+    return (
+      <div>no events!</div>
+    )
+  }
   
   return (
     <div>
