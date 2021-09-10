@@ -17,7 +17,12 @@ const fetchEvents = async () => {
 export default async (req, res) => {
   process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
   const pid = req.query.pid
-    const events = await fetchEvents()
-    .then (events => {return events.filter(event => event.name.includes(pid)|| event.description.includes(pid))});
+  if (!pid) {
+    const events = await fetchEvents();
+    res.send(events);
+    return;
+  }
+  const events = await fetchEvents()
+    .then(events => { return events.filter(event => event.name.includes(pid) || event.description.includes(pid)) });
   res.send(events)
 }
