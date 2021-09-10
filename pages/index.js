@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { EventsList } from '../components/events-list'
 
 export default function Home() {
   // variable to store the events in front-end's "state"
@@ -43,16 +44,7 @@ export default function Home() {
     <div>
       { events.length } events
       <hr />
-      {
-        events.map(event => {
-          return (
-            <div>
-              <h3>{ event.name }</h3>
-              <p>{ event.description }</p>
-            </div>
-          )
-        })
-      }
+      <EventsList events={ events } />
     </div>
   )
 }
