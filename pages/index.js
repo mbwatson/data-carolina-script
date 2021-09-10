@@ -22,7 +22,7 @@ export default function Home() {
   
   return (
     <div>
-      placeholder
+      { events.length } events
     </div>
   )
 }
