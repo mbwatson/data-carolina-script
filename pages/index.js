@@ -29,8 +29,8 @@ export default function Home() {
     fetchEvents();
   }, []);
 
+  // this function fires when the search button is clicked
   const handleClickSearch = event => {
-    // this function fires when the search button is clicked
     console.log(`\n\n\n\n the search button was clicked!\n\n\n\n`)
     console.log(`the query string is "${ inputElement.current.value }"`)
   }
