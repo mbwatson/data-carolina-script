@@ -23,6 +23,17 @@ export default function Home() {
   return (
     <div>
       { events.length } events
+      <hr />
+      {
+        events.map(event => {
+          return (
+            <div>
+              <h3>{ event.name }</h3>
+              <p>{ event.description }</p>
+            </div>
+          )
+        })
+      }
     </div>
   )
 }
