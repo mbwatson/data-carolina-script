@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { EventsList } from '../components/events-list'
 
@@ -8,6 +8,7 @@ export default function Home() {
   // `setEvents` is a function to assign the `events` variable
   const [events, setEvents] = useState([])
   const [error, setError] = useState(null)
+  const inputElement = useRef()
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -28,6 +29,12 @@ export default function Home() {
     fetchEvents();
   }, []);
 
+  const handleClickSearch = event => {
+    // this function fires when the search button is clicked
+    console.log(`\n\n\n\n the search button was clicked!\n\n\n\n`)
+    console.log(`the query string is "${ inputElement.current.value }"`)
+  }
+
   if (error) {
     return (
       <div>an error occurred!</div>
@@ -43,8 +50,8 @@ export default function Home() {
   return (
     <div>
       <div>
-        <input />
-        <button>search</button>
+        <input ref={ inputElement }/>
+        <button onClick={ handleClickSearch }>search</button>
       </div>
 
       <hr />
