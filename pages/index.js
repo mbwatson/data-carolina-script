@@ -11,7 +11,7 @@ export default function Home() {
       console.log(response)
     }
     fetchEvents()
-  }, [])
+  })
   
   return (
     <div>
