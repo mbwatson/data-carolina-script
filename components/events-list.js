@@ -1,10 +1,18 @@
+import styles from '../styles/events.module.css'
+
 export const EventsList = ({ events }) => {
-  return events.map((event, i) => {
-    return (
-      <div key={ i }>
-        <h3>{ event.name }</h3>
-        <p>{ event.description }</p>
-      </div>
-    )
-  })
+  return (
+    <div className={ styles.eventsList }>
+      {
+        events.map((event, i) => {
+          return (
+            <div key={ i }>
+              <h3>{ event.name }</h3>tig
+              <p>{ event.description }</p>
+            </div>
+          )
+        })
+      }
+    </div>
+  )
 }
