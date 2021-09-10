@@ -7,7 +7,7 @@ export const EventsList = ({ events }) => {
         events.map((event, i) => {
           return (
             <div key={ i } className={ styles.event }>
-              <h3>{ event.name }</h3>tig
+              <h3>{ event.name }</h3>
               <p>{ event.description }</p>
             </div>
           )
