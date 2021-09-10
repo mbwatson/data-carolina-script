@@ -42,8 +42,13 @@ export default function Home() {
   
   return (
     <div>
-      { events.length } events
+      <div>
+        <input />
+        <button>search</button>
+      </div>
+
       <hr />
+      { events.length } events
       <EventsList events={ events } />
     </div>
   )
